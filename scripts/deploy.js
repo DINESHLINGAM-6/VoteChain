@@ -1,26 +1,21 @@
 const hre = require("hardhat");
 
 async function main() {
-  // Compile the contract before deployment
-  await hre.run("compile");
+    console.log("🚀 Starting deployment...");
 
-  // Get the contract factory
-  const VotingSystem = await hre.ethers.getContractFactory("VotingSystem");
+    const VotingSystem = await hre.ethers.getContractFactory("VotingSystem");
+    console.log("✅ Contract factory fetched");
 
-  console.log("Deploying VotingSystem contract...");
+    const votingSystemInstance = await VotingSystem.deploy();
+    console.log("📦 Deployment transaction sent. Tx hash:", votingSystemInstance.deployTransaction.hash);
 
-  // Deploy the contract
-  const contract = await VotingSystem.deploy(); 
-  await contract.waitForDeployment(); 
-
-  // Fetch deployed contract address
-  console.log("Contract deployed to:", await contract.getAddress());
+    await votingSystemInstance.deployed();
+    console.log("🎉 Contract deployed at address:", votingSystemInstance.address);
 }
 
-// Execute the deployment script
 main()
   .then(() => process.exit(0))
   .catch((error) => {
-    console.error("Error deploying contract:", error);
+    console.error("❌ Error during deployment:", error);
     process.exit(1);
   });
