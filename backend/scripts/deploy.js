@@ -9,8 +9,8 @@ async function main() {
     const votingSystemInstance = await VotingSystem.deploy();
     console.log("📦 Deployment transaction sent. Tx hash:", votingSystemInstance.deployTransaction.hash);
 
-    await votingSystemInstance.deployed();
-    console.log("🎉 Contract deployed at address:", votingSystemInstance.address);
+    await votingSystemInstance .deployed();
+    console.log(`🎉 Contract deployed at: ${votingSystemInstance.address}`);
 }
 
 main()

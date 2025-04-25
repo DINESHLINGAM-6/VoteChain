@@ -38,5 +38,8 @@
     "ts-node": "^10.9.2",
     "typechain": "^8.3.0",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "next": "^15.3.1"
   }
 }
